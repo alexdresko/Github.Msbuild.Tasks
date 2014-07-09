@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package >
+	<metadata>
+		<id>$id$</id>
+		<version>$version$</version>
+		<title>$title$</title>
+		<authors>Alex Dresko</authors>
+		<owners>Alex Dresko</owners>
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<description>Testing</description>
+		<releaseNotes>Soon, my pretty... </releaseNotes>
+		<copyright>Copyright 2014</copyright>
+	</metadata>
+	<files>
+		<file src="tools\*.*" target="tools" />
+		<file src="content\*.*" target="content" />
+		<file src="bin\output\*.*" target="tools" />
+	</files>
+</package>

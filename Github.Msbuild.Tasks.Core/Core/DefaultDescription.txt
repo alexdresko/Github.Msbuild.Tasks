@@ -1,0 +1,8 @@
+﻿@Model.Repository.Description
+Milestone: @Model.Milestone.Title
+@Model.Milestone.Description
+
+@foreach(var issue in Model.Issues)
+{
+    @issue.Title @: @issue.State 
+}
