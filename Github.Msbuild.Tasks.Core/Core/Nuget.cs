@@ -2,6 +2,7 @@
 {
 	public class Nuget
 	{
-		public string Description { get; set; }
+		public string ReleaseNotes { get; set; }
+		public string ReleaseNotesPowershell { get; set; }
 	}
 }

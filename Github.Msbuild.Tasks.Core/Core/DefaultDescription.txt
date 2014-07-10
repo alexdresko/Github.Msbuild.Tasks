@@ -1,8 +1,8 @@
-﻿@Model.Repository.Description
-Milestone: @Model.Milestone.Title
-@Model.Milestone.Description
-
-@foreach(var issue in Model.Issues)
-{
-    @issue.Title @: @issue.State 
-}
+﻿{{Repository.Description}}
+{{#newline}}
+Milestone: {{Milestone.Title}}{{#newline}}
+{{Milestone.Description}}
+{{#newline}}{{#newline}}
+{{#each Issues}}
+* {{Title}} ({{State}}){{#newline}}
+{{/each}}

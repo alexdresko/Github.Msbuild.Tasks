@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using Github.Msbuild.Core;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Mustache;
 using Octokit;
-using RazorEngine;
 
 namespace Github.Msbuild.Tasks.Tests
 {
@@ -13,7 +13,7 @@ namespace Github.Msbuild.Tasks.Tests
 		public void CanPullDataFromGithub()
 		{
 			const string githubMsbuildTasks = "Github.Msbuild.Tasks";
-			var g = new GitIt("Github.Msbuild.Tasks.Tests", "alexdresko", githubMsbuildTasks, 1);
+			var g = new GitIt("Github.Msbuild.Tasks.Tests", "alexdresko", githubMsbuildTasks, 1, "84e19454e660cea104e5852e5795dee327fc4e3f");
 			g.SortDirection = SortDirection.Ascending;
 			//g.MileStone = "1";
 			var result = g.GetValue();
@@ -37,9 +37,10 @@ namespace Github.Msbuild.Tasks.Tests
 				new Issue { Title = "Another issue", State = ItemState.Closed, Milestone = model.Milestone }
 			};
 
-			var result = Razor.Parse(ResourceFileLoader.GithubMsbuildCoreDefaultDescriptiontxt, model);
+			Tweaker.Tweak(model);
+			
 
-			Assert.IsTrue(result.Contains("Niceeeeee"));
+			Assert.IsTrue(model.Nuget.ReleaseNotes.Contains("Niceeeeee"));
 		}
 	}
 }

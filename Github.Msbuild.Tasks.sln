@@ -25,6 +25,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".build", ".build", "{E9B952
 		.build\MSBuild.Community.Tasks.targets = .build\MSBuild.Community.Tasks.targets
 		.build\MSBuild.psm1 = .build\MSBuild.psm1
 		.build\Octokit.dll = .build\Octokit.dll
+		.build\RazorEngine.dll = .build\RazorEngine.dll
+		.build\RazorEngine.pdb = .build\RazorEngine.pdb
+		.build\RazorEngine.xml = .build\RazorEngine.xml
+		.build\System.Web.Razor.dll = .build\System.Web.Razor.dll
+		.build\System.Web.Razor.xml = .build\System.Web.Razor.xml
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Github.Msbuild.Tasks.WebHelper", "Github.Msbuild.Tasks.WebHelper\Github.Msbuild.Tasks.WebHelper.csproj", "{944F7938-210D-40C0-8AA0-DE1BC74BE7A7}"
