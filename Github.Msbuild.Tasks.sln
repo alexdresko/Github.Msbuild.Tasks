@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Github.Msbuild.Tasks.Tests", "Github.Msbuild.Tasks.Tests\Github.Msbuild.Tasks.Tests.csproj", "{0479EF6D-A1CF-4FA6-89C9-D6757174C19A}"
 EndProject
@@ -11,7 +11,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{988A9A
 	ProjectSection(SolutionItems) = preProject
 		.nuget\NuGet.Config = .nuget\NuGet.Config
 		.nuget\NuGet.exe = .nuget\NuGet.exe
-		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".build", ".build", "{E9B952F5-341A-4285-A73B-AAB9E294A610}"
@@ -32,8 +31,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".build", ".build", "{E9B952
 		.build\System.Web.Razor.xml = .build\System.Web.Razor.xml
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Github.Msbuild.Tasks.WebHelper", "Github.Msbuild.Tasks.WebHelper\Github.Msbuild.Tasks.WebHelper.csproj", "{944F7938-210D-40C0-8AA0-DE1BC74BE7A7}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,10 +45,6 @@ Global
 		{EE594299-6C9A-4ADF-B391-CD0B09863758}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE594299-6C9A-4ADF-B391-CD0B09863758}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EE594299-6C9A-4ADF-B391-CD0B09863758}.Release|Any CPU.Build.0 = Release|Any CPU
-		{944F7938-210D-40C0-8AA0-DE1BC74BE7A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{944F7938-210D-40C0-8AA0-DE1BC74BE7A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{944F7938-210D-40C0-8AA0-DE1BC74BE7A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{944F7938-210D-40C0-8AA0-DE1BC74BE7A7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

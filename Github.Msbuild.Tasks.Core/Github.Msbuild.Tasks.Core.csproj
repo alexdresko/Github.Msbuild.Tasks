@@ -44,11 +44,13 @@
     <Reference Include="Microsoft.Build.Framework" />
     <Reference Include="Microsoft.Build.Tasks.v4.0" />
     <Reference Include="Microsoft.Build.Utilities.v4.0" />
-    <Reference Include="mustache-sharp">
-      <HintPath>..\packages\mustache-sharp.0.2.7.1\lib\net40\mustache-sharp.dll</HintPath>
+    <Reference Include="mustache-sharp, Version=0.2.8.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\mustache-sharp.0.2.8.1\lib\net40\mustache-sharp.dll</HintPath>
     </Reference>
-    <Reference Include="Octokit">
-      <HintPath>..\packages\Octokit.0.3.5\lib\net45\Octokit.dll</HintPath>
+    <Reference Include="Octokit, Version=0.4.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Octokit.0.4.1\lib\net45\Octokit.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -63,6 +65,7 @@
     <Compile Include="Core\GithubModel.cs" />
     <Compile Include="Core\Nuget.cs" />
     <Compile Include="Core\Tweaker.cs" />
+    <Compile Include="Tasks\Packager.cs" />
     <Compile Include="Tasks\GetGithubModel.cs" />
     <Compile Include="Core\GitIt.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -81,18 +84,13 @@
     </None>
     <None Include="packages.config" />
     <None Include="PostBuildScripts\BuildNewPackage-RanAutomatically.ps1" />
-    <None Include="PostBuildScripts\New-NuGetPackage.ps1" />
-    <None Include="PostBuildScripts\UploadPackage-RunManually.bat" />
-    <None Include="PostBuildScripts\UploadPackage-RunManually.ps1" />
     <None Include="tools\install.ps1" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Core\DefaultReleaseNotes.txt" />
-    <Content Include="PostBuildScripts\NuGet.exe" />
     <None Include="tools\MSBuild.psm1" />
     <None Include="VersionInfo.txt" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="BeforeBuild">
     <Message Text="Forcing a clean" />
@@ -114,8 +112,9 @@
       <Output TaskParameter="NugetReleaseNotes" PropertyName="NugetReleaseNotes" />
       <Output TaskParameter="NugetReleaseNotesPowershell" PropertyName="NugetReleaseNotesPowershell" />
     </GetGithubModel>
+	  
+	  <Message Text="GOTIT = $(GithubDescription)"/>
     <AssemblyInfo CodeLanguage="CS" OutputFile="$(MSBuildProjectDirectory)\VersionInfo.cs" AssemblyVersion="$(Major).$(Minor).$(Build)" AssemblyFileVersion="$(Major).$(Minor).$(Build)" AssemblyDescription="wwffww" />
-
   </Target>
   <Target Name="AfterBuild">
     <Message Text="$(GithubMsbuildTasksPath)" />
@@ -126,17 +125,10 @@
     </ItemGroup>
     <Copy SourceFiles="@(SourceFiles)" DestinationFolder="bin\output" />
     <Message Text="Testing Github.Msbuild.Tasks.Core" />
-    <Exec Command="PowerShell -NoProfile -ExecutionPolicy Bypass -Command &quot;&amp; '$(ProjectDir)PostBuildScripts\BuildNewPackage-RanAutomatically.ps1' -ProjectFilePath '$(ProjectPath)' -OutputDirectory '$(TargetDir)' -Configuration '$(ConfigurationName)' -VersionNumber '$(Major).$(Minor).$(Build)-prerelease' -ReleaseNotes '$(NugetReleaseNotesPowershell)' -Platform '$(PlatformName)'&quot;" />
-  </Target>
-  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
   </Target>
   <PropertyGroup>
     <PostBuildEvent>
     </PostBuildEvent>
   </PropertyGroup>
+
 </Project>
